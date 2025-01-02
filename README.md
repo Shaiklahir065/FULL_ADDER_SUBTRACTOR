@@ -48,30 +48,51 @@ FULL SUBTRACTOR
 
 **Procedure**
 
-Write the detailed procedure here
+1.Type the program in Quartus software.
+
+2.Compile and run the program.
+
+3.Generate the RTL schematic and save the logic diagram.
+
+4.Create nodes for inputs and outputs to generate the timing diagram.
+
+5.For different input combinations generate the timing diagram
 
 **Program:**
 
 Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by:shaiklahir RegisterNumber:24005737
 
-          i)FULL ADDER
-          
-          module fa(a,b,cin,sum,carry);
-          input a,b,cin;
-          output sum,carry;
-          assign sum=( (a ^ b)^cin);
-          assign carry= ( (a & b)| ( cin &(a ^ b )));
-          endmodule
+Developed by:shaiklahir
 
-    ii)FULL SUBTRACTOR
-    
-    module fs(a,b,bin,difference,borrow);
-    input a,b,bin;
-    output difference,borrow;
-    assign difference= ( (a ^ b)^bin);
-    assign borrow= ( ( ~a & b)| ( bin & (~(a ^ b ))));
-    endmodule
+RegisterNumber:24005737
+
+          module exp4(sum, cout, a, b, cin);
+            output sum;
+            output cout;
+            input a;
+            input b;
+            input cin;
+            wire s1, c1, c2;
+            xor(s1,a,b);
+            and(c1,a,b);
+            xor (sum, s1, cin);
+            and (c2, s1, cin);
+            or (cout, c2, c1);
+            endmodule
+            
+            module exp4a (df, bo, a, b, bin);
+            output df;
+            output bo;
+            input a;
+            input b;
+            input bin;
+            wire w1,w2, w3;
+            assign w1=a^b;
+            assign w2=(~a&b);
+            assign w3=(~w1&bin);
+            assign df=w1^bin;
+            assign bo=w2/w3;
+            endmodule
 
 
 **RTL Schematic**
@@ -88,11 +109,12 @@ FULL SUBTRACTOR
 
 FULL ADDER
 
-![min_fa](https://github.com/user-attachments/assets/2da1e502-6a55-4692-b3f4-f18343f8650c)
+![image](https://github.com/user-attachments/assets/6a171ee7-5789-40ce-b40f-702147f9c07c)
+
 
 FULL SUBTRACTOR
 
-![min_fs](https://github.com/user-attachments/assets/a5d363b7-121f-4e12-b30d-09980c62594a)
+![image](https://github.com/user-attachments/assets/530736ca-dab7-4f9c-aa25-8df81c1ce1ff)
 
 **Result:**
 
